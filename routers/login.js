@@ -1,11 +1,10 @@
 const express = require('express');
-const {check, validationResult} = require('express-validator/check');
+const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const user = require('./models/users');
+const user = require('../models/users');
 
 const router = express.Router();
-
 router.post('/signup', [
     check("username", "Please enter a vaild username!")
     .not()
@@ -64,5 +63,9 @@ router.post('/signup', [
         }
     }
 );
+
+router.get('/signup', async(req,res)=>{
+    res.json({message:'Please supply credential!'})
+})
 
 module.exports = router
