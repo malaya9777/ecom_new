@@ -15,12 +15,11 @@ router.post('/signup', [
     })],
     async(req, res)=>{
         const errors = validationResult(req);
-        if(!error.isEmpty()){
+        if(!errors.isEmpty()){
             return res.status(400).json({
                 errors: errors.array()
             })
         }
-
         const {username, email, password} = req.body;
         try{
             let user = await user.findOne({email});
@@ -43,7 +42,6 @@ router.post('/signup', [
                     id: user.id
                 }
             };
-
             jwt.sign(
                 payload,
                 "randomString",
@@ -54,9 +52,7 @@ router.post('/signup', [
                     if(err) throw err;
                     res.status(200).json({token});
                 }
-
             )
-
         }catch(e){
             console.log(e.message);
             res.status(500).send("Error in saving!")
@@ -65,7 +61,7 @@ router.post('/signup', [
 );
 
 router.get('/signup', async(req,res)=>{
-    res.json({message:'Please supply credential!'})
+    res.render('users_signup')
 })
 
-module.exports = router
+module.exports = router;
