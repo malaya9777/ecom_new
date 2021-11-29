@@ -1,11 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const initializeMongoServer = require('./config/db');
-const user = require('./models/users')
+const user = require('./routers/login');
+
+const router = express.Router();
 
 
 initializeMongoServer();
 const app = express();
+app.use(bodyParser.json)
 
 const PORT = process.env.PORT || 8000;
 
