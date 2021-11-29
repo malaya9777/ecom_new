@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const initializeMongoServer = require('./config/db');
+const user = require('./models/users')
 
+
+initializeMongoServer();
 const app = express();
 
 const PORT = process.env.PORT || 8000;
