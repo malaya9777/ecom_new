@@ -23,7 +23,8 @@ app.set('views', path.join(__dirname, 'public/views'));
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use('/assests', express.static(path.join(__dirname, 'public/assests')));
 app.use('/js', express.static(path.join(__dirname, 'public/js')));
-//app.set('layout', 'layouts/layout.ejs');
+app.set('layout', 'layouts/master');
+
 
 app.get("/", (req, res)=>{
     res.render('index');

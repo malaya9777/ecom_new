@@ -3,11 +3,12 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
 router.get('/signup', async (req, res) => {
-    res.render('user_signup')
+    res.render('user_signup', {layout:'layouts/master_login'})
 });
 router.post('/signup', [
     check("username", "Please enter a vaild username!")
@@ -55,8 +56,7 @@ router.post('/signup', [
                 },
                 (err, token) => {
                     if (err) throw err;
-                    router.set('layout', 'layouts/master.ejs');
-                    res.status(200).render('dashboard', { token });
+                    res.status(200).render('dashboard', { token, layout:false });
                 }
             )
         } catch (e) {
@@ -66,7 +66,7 @@ router.post('/signup', [
     }
 );
 router.get('/signin', async (req, res) => {
-    res.render('user_signin')
+    res.render('user_signin', {layout:'layouts/master_login'})
 });
 
 
@@ -109,9 +109,9 @@ router.post('/signin', [
                 "randomString",
                 {expiresIn:3600},
                 (err, token)=>{
-                    if(err) throw err;
-                    router.set('layout', 'layouts/master.ejs');
-                    res.status(200).render('user_dashboard', {token})
+                    if(err) throw err;   
+                    res.set('token',token)                
+                    res.status(200).render('user_dashboard', {token});                    
                 }
             )
 
@@ -122,5 +122,10 @@ router.post('/signin', [
             })
         }
     }
-)
+);
+
+router.get('/dashboard', auth, async(req, res)=>{
+    res.status(200).render('user_dashboard', {token});
+})
+
 module.exports = router;

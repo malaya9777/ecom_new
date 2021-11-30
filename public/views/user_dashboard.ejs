@@ -1,1 +1,6 @@
 <h5>Dashboard</h5>
+
+<script>
+    localStorage.setItem('token', '<%= token %>');
+    window.history.replaceState("","",'/user/dashboard')
+</script>
