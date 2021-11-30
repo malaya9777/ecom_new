@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoURL = 'mongodb+srv://malayaAdmin:AWrairfqITBmkrej@cluster0.yw3xa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const mongoURL = 'mongodb+srv://malayaAdmin:AWrairfqITBmkrej@cluster0.yw3xa.mongodb.net/Authentication?retryWrites=true&w=majority';
 
 const initializeMongoServer = async ()=>{
     try{

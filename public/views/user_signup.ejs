@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <title>Signup</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/user/signup" method="post" autocomplete="off">
+
+            <br>
+            <br>
+            <div class="row">
+                <div class="four columns">
+                    <label for="username">Username</label>
+                    <input type="text" class="u-full-width" placeholder="Username" name="username" id="username" >
+                </div>
+            </div>
+<br>
+            <div class="row">
+                <div class="four columns">
+                    <label for="email">Email ID</label>
+                    <input type="email" class="u-full-width" placeholder="email" name="email" id="email">
+                </div>
+            </div>
+<br>
+            <div class="row">
+                <div class="four columns">
+                    <label for="password">Password</label>
+                    <input type="password" class="u-full-width" placeholder="Password" name="password" id="password">
+                </div>
+            </div>
+            <br>
+          
+            <div class="row">
+                <div class="four columns">
+                    <input class="button-primary" type="submit" value="Signup"> or 
+                    <a class="button-primary" href="/user/signin">Signin</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

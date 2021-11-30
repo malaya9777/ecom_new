@@ -1,8 +1,10 @@
 const express = require('express');
 const initializeMongoServer = require('./config/db');
-const login = require('./routers/login');
+const user = require('./routers/user');
 const ejs = require('ejs');
 const path = require('path');
+const bodyParser = require('body-parser');
+const layouts = require('express-ejs-layouts')
 
 const router = express.Router();
 
@@ -11,8 +13,11 @@ initializeMongoServer();
 const app = express();
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
+app.use(layouts)
 
 const PORT = process.env.PORT || 8000;
+
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('views', path.join(__dirname, 'public/views'));
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
@@ -23,6 +28,6 @@ app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.get("/", (req, res)=>{
     res.render('index');
 });
-app.use("/user", login);
+app.use("/user", user);
 
 app.listen(PORT, console.log(`Listning on PORT ${PORT}`));
