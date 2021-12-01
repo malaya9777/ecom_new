@@ -125,7 +125,7 @@ router.post('/signin', [
 );
 
 router.get('/dashboard', auth, async(req, res)=>{
-    res.status(200).render('user_dashboard', {token});
+    res.status(200).render('user_dashboard');
 })
 
 module.exports = router;
