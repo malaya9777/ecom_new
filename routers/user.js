@@ -127,6 +127,10 @@ router.post('/signin', [
 
 router.get('/dashboard', auth, async(req, res)=>{
     res.status(200).render('user_dashboard', {token: null});
-})
+});
+
+router.get('/signout', async (req, res) => {
+    res.render('user_signout', {layout:'layouts/master_login'})
+});
 
 module.exports = router;

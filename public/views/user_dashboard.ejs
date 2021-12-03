@@ -5,7 +5,16 @@
         document.cookie = "token=<%=token%>";
     }
     document.getElementById('btnLogout').addEventListener('click',()=>{
-        
+        document.cookie = "token=";
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.history.pushState('Signing Out','','/user/signout');
+        window.location.href='/user/signout';
+       
     })   
     window.history.replaceState("","",'/user/dashboard')
 </script>
