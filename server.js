@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts')
-
+const cookieParser = require('cookie-parser')
 const router = express.Router();
 
 
@@ -14,6 +14,7 @@ const app = express();
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 app.use(layouts)
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 8000;
 

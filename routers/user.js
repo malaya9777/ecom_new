@@ -56,7 +56,8 @@ router.post('/signup', [
                 },
                 (err, token) => {
                     if (err) throw err;
-                    res.status(200).render('dashboard', { token, layout:false });
+                    
+                    res.render('dashboard', { token, layout:false });
                 }
             )
         } catch (e) {
@@ -125,7 +126,7 @@ router.post('/signin', [
 );
 
 router.get('/dashboard', auth, async(req, res)=>{
-    res.status(200).render('user_dashboard');
+    res.status(200).render('user_dashboard', {token: null});
 })
 
 module.exports = router;
